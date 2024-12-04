@@ -9,6 +9,9 @@ const createHabit = document.querySelector(".popup button")
 const typos = document.querySelectorAll(".typos p");
 const counterHabit = document.getElementById("counterHabit");
 const typos_colors = document.querySelectorAll(".typos_colors p");
+const typos_icons = document.querySelectorAll(".typos_icons span")
+const app_footerLi = document.getElementsByClassName("app_footer-li");
+const main_complete = document.querySelector(".main_complete");
 
 // popup
 const afteri = document.getElementById("afteri");
@@ -22,7 +25,7 @@ let pingAud = new Audio("sounds/ping.mp3");
 
 let countTask = 0;
 let selectedColor="default";
-
+let selectedIcon = "sentiment_very_satisfied";
 
 
 // choose typos
@@ -35,22 +38,33 @@ typos.forEach((elem)=>{
 });
 
 // labelColors
-typos_colors.forEach((element) => {
-    element.addEventListener("click", (e) => {
-        typos_colors.forEach((el) => {
-            el.classList.remove("activeLabelColor");
+const changeLabels = (data, added) =>{
+    data.forEach((element) => {
+        element.addEventListener("click", (e) => {
+            data.forEach((el) => {
+                el.classList.remove(`${added}`);
+            });
+            e.target.classList.add(`${added}`);
+            let colorsArr = ["colorOfRed", "colorOfGreen", "colorOfBlue"];
+            const hasColorClass = colorsArr.some(color => e.target.classList.contains(color));
+            if(hasColorClass){selectedColor = e.target.classList[0];}
+            else{selectedIcon = e.target.textContent;}
         });
-        e.target.classList.add("activeLabelColor");
-        selectedColor = e.target.classList[0];
     });
-});
+};
+changeLabels(typos_icons, "typos_iconsActive");
+changeLabels(typos_colors, "activeLabelColor");
 
 // updateCards
 const updateDisplay = () =>{
-    countTask++;
-    loadCheck();
-    pingAud.play();
-    let html = `<span class="material-symbols-outlined"> sentiment_very_satisfied </span>
+    if(iwill.value === "" || afteri.value == ""){
+        alert("Please Enter Something!");
+    }
+    else{
+        countTask++;
+        pingAud.play();
+        loadCheck();
+      let html = `<span class="material-symbols-outlined"> ${selectedIcon} </span>
                 <div class="pending-item_content">
                     <h4>I will, ${iwill.value}</h4>
                     <p>After I, ${afteri.value}</p>
@@ -58,12 +72,33 @@ const updateDisplay = () =>{
     let newElem = document.createElement("div");
     newElem.innerHTML = html;
     newElem.classList.add("pending-item", `${selectedColor}`,"dp-flex");
-    pending_list.appendChild(newElem);
-    counterHabit.textContent = `(${countTask})`
+    pending_list.prepend(newElem);
+    counterHabit.textContent = `(${countTask})`;
     afteri.value = "";
     iwill.value = "";
+}
+    
 
 };
+
+// pageNav
+app_footerLi[0].addEventListener("click", ()=>{
+    if(countTask >= 1){
+        main_content.style.display = "block"
+        main_complete.style.display = "none";
+        app_footerLi[2].classList.remove("app_footerActive");
+      app_footerLi[0].classList.add("app_footerActive")
+    }
+})
+app_footerLi[2].addEventListener("click", ()=>{
+    if(countTask >= 1){
+        main_content.style.display = "none"
+        main_complete.style.display = "block";
+        app_footerLi[0].classList.remove("app_footerActive")
+        app_footerLi[2].classList.add("app_footerActive");
+    }
+});
+
 
 // date & default page
 const loadCheck = ()=>{
@@ -74,6 +109,7 @@ const loadCheck = ()=>{
     else{
         main_content.style.display = "block";
         empty_page.style.display = "none";
+        app_footerLi[0].classList.add("app_footerActive");
     }
     // date 
     let now = new Date();
