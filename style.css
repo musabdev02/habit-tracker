@@ -138,6 +138,7 @@ input:focus{
     font-size: 16px;
 }
 .pending_list{
+    height: 640px;
     overflow: scroll;
     padding: 20px 0px;
 }
@@ -177,12 +178,12 @@ input:focus{
     background: #fff;
     z-index: 99;
     position: absolute;
-    bottom: 5%;
+    bottom: 0%;
     left: 0%;
     width: 100%;
-    height: 80%;
+    height: 100%;
     border: 1px solid rgb(224, 222, 222);
-    padding: 34px;
+    padding: 20px;
     box-shadow: 0px 0px 7px 6px #f1eded;
     border-radius: 8px 8px 0px 0px;
     transition: opacity 0.3s ease;
@@ -237,6 +238,36 @@ input:focus{
     border: 2px dotted #c5c5c5;
     color: #464646;
 }
+.typos_colors{
+     gap: 10px;
+}
+.colorOfRed{
+    background-color: #FDE1BF ;
+}
+.colorOfRed span{
+    background-color: #F7B879;
+}
+.colorOfGreen span{
+    background-color: #A4DCDB;
+}
+.colorOfGreen{
+    background-color: #D7F1EF;
+}
+.colorOfBlue{
+    background-color: #DDEFFF;
+}
+.colorOfBlue span{
+    background-color: #97CAFA;
+}
+.typos_colors p{
+    margin-block-start: 8px;
+    padding: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.activeLabelColor{
+    border: 2px solid #b4b3b3;
+}
 .popup_body button{
     margin-block-start: 44px;
 }
@@ -266,8 +297,11 @@ input:focus{
     .app_footer{
         justify-content: space-around;
     }
+    .pending_list{
+        height: 500px;
+    }
     .app_footer-li h5{display: none; }
-    .popup{  height: 100%; }
+    .popup{  height: 100%; position: fixed; overflow: scroll;}
     .group .typos{flex-wrap: wrap; }
     .group input{ font-size: 15px; }
     .pending-item{gap: 18px; }
