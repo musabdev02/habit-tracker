@@ -6,14 +6,7 @@ const currentDate = document.getElementById("currentDate");
 let pending_list = document.querySelector(".pending_list");
 const pending_li = document.querySelectorAll(".pending-item");
 const createHabit = document.querySelector(".popup button")
-
 const typos = document.querySelectorAll(".typos p");
-
-
-
-
-
-
 
 // popup
 const afteri = document.getElementById("afteri");
@@ -22,7 +15,10 @@ const createtask = document.querySelector(".create");
 const popup = document.querySelector(".popup");
 const closePop = document.querySelector(".closePop");
 
-let countTask = 1;
+// sounds
+let pingAud = new Audio("sounds/ping.mp3");
+
+let countTask = 0;
 
 createtask.addEventListener("click", ()=>{
     popup.style.opacity = 1;
@@ -36,8 +32,8 @@ const closePopUp = () =>{
 typos.forEach((elem)=>{
     elem.addEventListener("click", (e)=>{
        let typoInp = e.target.parentNode.parentNode.childNodes[3];
-        let typoText = e.target.textContent;
-         typoInp.value = typoText;
+       let typoText = e.target.textContent;
+       typoInp.value = typoText;
     });
 });
 
@@ -51,8 +47,8 @@ closePop.addEventListener("click", closePopUp);
 const updateDisplay = () =>{
     countTask++;
     loadCheck();
-    let html = `
-                <span class="material-symbols-outlined">check</span>
+    pingAud.play();
+    let html = `<span class="material-symbols-outlined"> sentiment_very_satisfied </span>
                 <div class="pending-item_content">
                     <h4>I will, ${iwill.value}</h4>
                     <p>After I, ${afteri.value}</p>
