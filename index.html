@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body class="dp-flex">
+   <div id="app">
+    <div class="app_header dp-flex">
+        <h3>All Habits</h3>
+        <button class="btn-gray dp-flex" title="This Option is not avalable"><span class="material-symbols-outlined">timeline</span>My Stats </button>
+    </div>
+    <div class="app_body">
+        <div class="empty_page">
+            <div class="empty_page-content">
+            <span class="material-symbols-outlined">hourglass_disabled</span>
+            <h3>Create new habit</h3>
+            <p>Your current habbits will come here, create one by tapping on plus button below</p>
+        </div>
+        </div>
+        <!-- list -->
+        <div class="main_content">
+            <h4 class="dp-flex">Pending habits <span id="currentDate">12 Jan, Thursday</span></h4>
+         <div class="pending_list"></div>
+         <h4>Completed habits</h4>
+         <div class="compeleted_list">
+         </div>
+       </div>
+    </div>
+    <div class="app_footer dp-flex"> 
+        <div class="app_footer-li">
+            <span class="material-symbols-outlined"> home</span>
+            <h5>Home</h5>
+        </div>
+        <div class="app_footer-li create">
+            <span class="material-symbols-outlined"> add</span>
+            <h5>Create new</h5>
+        </div>
+        <div class="app_footer-li">
+            <span class="material-symbols-outlined">help </span>
+            <h5>About</h5>
+        </div>
+    </div>
+    <!-- popup -->
+    <div class="popup">
+        <div class="popup_header dp-flex">
+            <h3>New Habit</h3>
+            <p class="closePop">Cancel</p>
+        </div>
+        <div class="popup_body">
+            <div class="group dp-flex">
+                <label for="">After I,</label>
+                <input type="text" id="afteri" placeholder="Choose or type your existing habit">
+                <div class="typos dp-flex">
+                    <p>brush my teeth</p>
+                    <p>had dinner</p>
+                    <p>finish my gym</p>
+                </div>
+            </div>
+            <div class="group dp-flex">
+                <label for="iwill">I Will,</label>
+                <input type="text" id="iwill" placeholder="Choose or type your new habit">
+                <div class="typos willI dp-flex">
+                    <p>meditate for 5 min</p>
+                    <p>go for a walk</p>
+                    <p>read an article</p>
+                </div>
+            </div>
+            <button class="btn-primary">Create New Habit</button>
+        </div>
+        </div>
+    </div>
+   </div> 
+
+   <script src="script.js"></script>
+</body>
+</html>

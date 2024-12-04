@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.dp-flex{
+    display: flex;
+    align-items: center;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    font-family: "DM Sans", sans-serif;
+}
+input{
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+}
+input:focus{
+    outline: none;
+    box-shadow: 0px 0px 4px 0px #90bcff;
+    border: 1px solid #468FFF !important;
+    transition: 0.3s ease;
+}
+.btn-gray{
+    background: #F1F1F1;
+    border: 1px solid #F1F1F1;
+    padding: 8px 10px;
+    border-radius: 16px;
+    cursor: not-allowed;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    gap: 8px;
+    color: #515050;
+    user-select: none;
+}
+.btn-primary{
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 4px;
+    background: #468FFF;
+    color: #fff;
+    border: 1px solid #468FFF;
+    font-weight: 500;
+    font-size: 16px;
+    font-family: "DM Sans", sans-serif;
+}
+.btn-gray span{
+    font-size: 19px;
+}
+#app{
+    width: 700px;
+    height: 90%;
+    user-select: none;
+    position: relative;
+}
+/* app_header */
+.app_header{
+    justify-content: space-between;
+}
+.app_header h3{
+    font-size: 29px;
+}
+/* app_body */
+.app_body{
+    justify-content: center;
+}
+.empty_page{
+    display: none;
+    place-content: center;
+    height: calc(100vh - 185px);
+    text-align: center;
+}
+.empty_page-content{
+    width: 400px;
+    color: gray;
+}
+.empty_page-content span{
+    font-size: 89px;
+    margin-block-end: 14px;
+}
+.empty_page-content h3{
+    font-size: 24px;
+    color: gray;
+    margin-block-end: 14px;
+}
+/* app_footer */
+.app_footer{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: -2%;
+    justify-content: space-around;
+    background: #fff;
+}
+.app_footer-li{
+    text-align: center;
+    cursor: pointer;
+}
+.app_footer-li:nth-of-type(2) span{
+    background: #468FFF;
+    border-radius: 50%;
+    font-size: 44px;
+    padding:12px;
+    color: white;
+}
+.app_footer-li span{
+    font-size: 36px;
+    margin-block-end: 4px;
+}
+.app_footer-li h5{
+    font-size: 15px;
+    font-weight: 400;
+    color: gray;
+}
+/* main_content */
+.main_content{
+    margin-block-start: 44px;
+}
+.main_content h4{
+    color: gray;
+    justify-content: space-between;
+    font-size: 19px;
+    font-weight: 600;
+}
+.main_content h4:nth-of-type(2){
+    margin-block-start: 29px;
+}
+.main_content h4 span{
+    font-size: 16px;
+}
+.pending_list{
+    margin-block-start: 24px;
+}
+.pending-item{
+    background: #FDE0C1;
+    padding: 18px;
+    border-radius: 8px;
+    gap: 24px;
+    margin-block-start: 14px;
+}
+.pending-item:nth-of-type(2){
+    background: #D7F1EF;
+}
+.pending-item span{
+    font-size: 34px;
+    background: #F4C28C;
+    color: #fff;
+    padding: 12px;
+    border-radius: 50%;
+}
+.pending-item_content h4{
+    font-size: 21px;
+    color: #3f3f3f;
+    margin-block-end: 4px;
+}
+.pending-item_content p{
+    color: gray;
+    font-size: 17px;
+}
+.compeleted_list h4, .compeleted_list p{
+    text-decoration: line-through;
+}
+.compeleted_list .pending-item span{
+    color: #000;
+}
+/* popup */
+
+.popup{
+    background: #fff;
+    z-index: 99;
+    position: absolute;
+    bottom: 5%;
+    left: 0%;
+    width: 100%;
+    height: 80%;
+    border: 1px solid rgb(224, 222, 222);
+    padding: 34px;
+    box-shadow: 0px 0px 7px 6px #f1eded;
+    border-radius: 8px 8px 0px 0px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+
+}
+.popup_header{
+    justify-content: space-between;
+}
+.popup_header h3{
+    font-size: 24px;
+}
+.popup_header p{
+    color: #468FFF;
+    font-size: 18px;
+    cursor: pointer;
+}
+.popup_body{
+    margin-block-start: 44px;
+}
+.popup_body .group{
+    flex-direction: column;
+    align-items: start;
+}
+.popup_body .group:nth-of-type(2), .popup_body .group:nth-of-type(3){
+    margin-block-start: 44px;
+}
+.popup_body .group label{
+    font-size: 17px;
+    color: gray;
+    margin-block-end: 8px;
+}
+.group input{
+    width: 100%;
+    height: 56px;
+    padding: 14px;
+    font-size: 17px;
+    border-radius: 6px;
+    border: 1px solid #e8e4e4;
+}
+.group .typos{
+    margin-block-start: 8px;
+    gap: 10px;
+}
+.group .typos p{
+    background: #F1F1F1;
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 22px;
+    border: 2px dotted #c5c5c5;
+    color: #464646;
+}
+.popup_body button{
+    margin-block-start: 44px;
+}
