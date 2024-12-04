@@ -2,7 +2,9 @@
 // main_content
 const main_content = document.querySelector(".main_content");
 const empty_page = document.querySelector(".empty_page");
+const currentDate = document.getElementById("currentDate");
 let pending_list = document.querySelector(".pending_list");
+const pending_li = document.querySelectorAll(".pending-item");
 const createHabit = document.querySelector(".popup button")
 
 const typos = document.querySelectorAll(".typos p");
@@ -20,10 +22,7 @@ const createtask = document.querySelector(".create");
 const popup = document.querySelector(".popup");
 const closePop = document.querySelector(".closePop");
 
-
-let afterVal;
-let willVal;
-let countTask = 0;
+let countTask = 1;
 
 createtask.addEventListener("click", ()=>{
     popup.style.opacity = 1;
@@ -39,8 +38,6 @@ typos.forEach((elem)=>{
        let typoInp = e.target.parentNode.parentNode.childNodes[3];
         let typoText = e.target.textContent;
          typoInp.value = typoText;
-         afterVal = afteri.value;
-         willVal = iwill.value;
     });
 });
 
@@ -57,15 +54,15 @@ const updateDisplay = () =>{
     let html = `
                 <span class="material-symbols-outlined">check</span>
                 <div class="pending-item_content">
-                    <h4>I will, ${willVal}</h4>
-                    <p>After I, ${afterVal}</p>
+                    <h4>I will, ${iwill.value}</h4>
+                    <p>After I, ${afteri.value}</p>
                 </div> `;
     let newElem = document.createElement("div");
     newElem.innerHTML = html;
     newElem.classList.add("pending-item", "dp-flex");
     pending_list.appendChild(newElem);
-    willVal = "";
-    afterVal = "";
+    afteri.value = "";
+    iwill.value = "";
 
 };
 
@@ -78,5 +75,22 @@ const loadCheck = ()=>{
         main_content.style.display = "block";
         empty_page.style.display = "none";
     }
-}
+    // date 
+    let now = new Date();
+    let nowDay = now.getDay();
+    let nowMonth = now.getMonth();
+    let nameMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let nameDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    currentDate.textContent = `${nowDay+1} ${nameMonths[nowMonth]}, ${nameDays[nowDay]}`
+};
+
 window.addEventListener("load", loadCheck)
+
+// complete task
+if(countTask >= 1){
+    pending_li.forEach((element)=>{
+        element.addEventListener("click", (e)=>{
+            console.log(e.target)
+        })
+    })
+}

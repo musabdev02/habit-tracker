@@ -51,6 +51,10 @@ input:focus{
 .btn-gray span{
     font-size: 19px;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
 #app{
     width: 700px;
     height: 90%;
@@ -95,6 +99,7 @@ input:focus{
     bottom: -2%;
     justify-content: space-around;
     background: #fff;
+    padding: 10px 0px;
 }
 .app_footer-li{
     text-align: center;
@@ -134,16 +139,16 @@ input:focus{
 }
 .pending_list{
     margin-block-start: 24px;
+    height: 630px;
+    overflow: scroll;
 }
 .pending-item{
     background: #FDE0C1;
     padding: 18px;
     border-radius: 8px;
     gap: 24px;
-    margin-block-start: 14px;
-}
-.pending-item:nth-of-type(2){
-    background: #D7F1EF;
+    margin: 14px;
+    cursor: pointer;
 }
 .pending-item span{
     font-size: 34px;
