@@ -143,13 +143,14 @@ input:focus{
 .main_content h4 span, .compeleted_list h4 span{
     font-size: 16px;
 }
-.pending_list, .compeleted_list{
+.pending_list{
     height: 640px;
     overflow: scroll;
     padding: 20px 0px;
 }
-.compeleted_list .pending-item span, .compeleted_list .pending-item_content h4, .compeleted_list .pending-item_content p{
-    text-decoration: line-through;
+.compeleted_list .compeleted_list>span, .compeleted_list .pending-item_content h4, .compeleted_list .pending-item_content p{
+    text-decoration: line-through !important;
+    color: #000;
 }
 .pending-item{
     background: #FDE0C1;

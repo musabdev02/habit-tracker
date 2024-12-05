@@ -12,6 +12,7 @@ const typos_colors = document.querySelectorAll(".typos_colors p");
 const typos_icons = document.querySelectorAll(".typos_icons span")
 const app_footerLi = document.getElementsByClassName("app_footer-li");
 const main_complete = document.querySelector(".main_complete");
+const compeleted_list = document.querySelector(".compeleted_list");
 
 // popup
 const afteri = document.getElementById("afteri");
@@ -22,8 +23,11 @@ const closePop = document.querySelector(".closePop");
 
 // sounds
 let pingAud = new Audio("sounds/ping.mp3");
+let paperAud = new Audio("sounds/paper.mp3");
 
 let countTask = 0;
+let compeletTask = 0;
+let compeleteMark;
 let selectedColor="default";
 let selectedIcon = "sentiment_very_satisfied";
 
@@ -57,6 +61,9 @@ changeLabels(typos_colors, "activeLabelColor");
 
 // updateCards
 const updateDisplay = () =>{
+    const getCounter = ()=>{
+        counterHabit.textContent = `(${countTask})`;
+    }
     if(iwill.value === "" || afteri.value == ""){
         alert("Please Enter Something!");
     }
@@ -73,17 +80,30 @@ const updateDisplay = () =>{
     newElem.innerHTML = html;
     newElem.classList.add("pending-item", `${selectedColor}`,"dp-flex");
     pending_list.prepend(newElem);
-    counterHabit.textContent = `(${countTask})`;
+    getCounter();
     afteri.value = "";
     iwill.value = "";
-}
+    const allAppearTasks = newElem;
+    allAppearTasks.addEventListener("click", (e)=>{
+        if(e.target.classList.contains("pending-item")){
+            if(!e.target.classList.contains("compeleted_list")){
+                paperAud.play();
+            }
+            e.target = e.target.classList.add("compeleted_list");
+            compeleted_list.prepend(e.target);
+            compeletTask++; 
+            countTask--;
+            getCounter();
+        }
+    });
     
-
+    
+}
+ 
 };
-
 // pageNav
 app_footerLi[0].addEventListener("click", ()=>{
-    if(countTask >= 1){
+    if(compeletTask >= 1){
         main_content.style.display = "block"
         main_complete.style.display = "none";
         app_footerLi[2].classList.remove("app_footerActive");
@@ -91,7 +111,7 @@ app_footerLi[0].addEventListener("click", ()=>{
     }
 })
 app_footerLi[2].addEventListener("click", ()=>{
-    if(countTask >= 1){
+    if(compeletTask >= 1){
         main_content.style.display = "none"
         main_complete.style.display = "block";
         app_footerLi[0].classList.remove("app_footerActive")
