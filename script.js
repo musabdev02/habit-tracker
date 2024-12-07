@@ -31,6 +31,11 @@ let compeleteMark;
 let selectedColor="default";
 let selectedIcon = "sentiment_very_satisfied";
 
+// spinner
+window.addEventListener("load", ()=>{
+    document.getElementById("spinner").style.display = "none";
+    document.querySelector("#app").style.display = "block";
+});
 
 // choose typos
 typos.forEach((elem)=>{
@@ -156,4 +161,5 @@ createHabit.addEventListener("click", ()=>{
     closePopUp();
     updateDisplay();
 });
+
 
